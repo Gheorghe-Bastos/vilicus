@@ -3,7 +3,7 @@ import { Geist_Mono, Inter, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "./components/ui/header";
+import {SideBar} from "@/components/sideBar"
 import { Footer2 } from "@/components/footer2";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -34,22 +34,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         instrumentSans.variable
       )}
     >
-      <header className="sticky top-0 z-40 w-full">
-        <Header />
-      </header>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex min-h-screen">
+            <SideBar />
+            <div className="flex min-w-0 flex-1 flex-col">
+              <main className="flex-1">{children}</main>
+              <Footer2 />
+            </div>
+          </div>
         </ThemeProvider>
       </body>
-      <footer>
-        <Footer2 />
-      </footer>
     </html>
   );
 }
