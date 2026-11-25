@@ -1,17 +1,17 @@
 import * as React from "react"
 import { cn } from "cn"
 
-function Card({
-  className,
-  size = "default",
-  ...props
-}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
+export type CardProps = React.ComponentProps<"div"> & { size?: "default" | "sm" }
+export type CardHeaderProps = React.ComponentProps<"div">
+export type CardTitleProps = React.ComponentProps<"div">
+
+function Card({ className, size = "default", ...props }: CardProps) {
   return (
     <div
       data-slot="card"
       data-size={size}
       className={cn(
-        "group/card flex flex-col gap-1 overflow-hidden rounded-lg bg-card py-2 text-sm text-card-foreground border border-border [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)] *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+        "group/card flex flex-col gap-1 overflow-hidden rounded-xl bg-card py-2 text-sm text-card-foreground border border-border [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)] *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
         className
       )}
       {...props}
@@ -19,7 +19,7 @@ function Card({
   )
 }
 
-function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+function CardHeader({ className, ...props }: CardHeaderProps) {
   return (
     <div
       data-slot="card-header"
@@ -32,7 +32,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+function CardTitle({ className, ...props }: CardTitleProps) {
   return (
     <div
       data-slot="card-title"

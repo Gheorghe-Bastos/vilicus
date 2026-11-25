@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen">
+          <div className="flex gap-2 min-h-screen">
             <SideBar />
             <div className="flex min-w-0 flex-1 flex-col">
               <main className="flex-1">{children}</main>

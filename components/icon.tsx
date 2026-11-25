@@ -17,7 +17,7 @@ interface IconProps extends Omit<LucideProps, "size"> {
 }
 
 export function Icon({ icon: IconComponent, size = "sm", className, ...props }: IconProps) {
-  return <IconComponent className={cn(iconSizes[size], className)} {...props} />
+  return <IconComponent className={cn(iconSizes[size], className)} {...props} strokeWidth={2.5}/>
 }
 
 export { iconSizes, type IconProps, type IconSize }
