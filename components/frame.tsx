@@ -1,7 +1,7 @@
 import { Column, type ColumnProps } from "./column"
 import { Button } from "./ui/button"
 import { Icon } from "@/components/icon"
-import { Plus, Trash } from "lucide-react"
+import { ChartColumnBig, Plus, Trash } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export interface FrameProps {
@@ -21,6 +21,7 @@ export function Frame({
     onDeleteProject,
     className,
 }: FrameProps) {
+
     return (
         <main className={cn("flex flex-col gap-4 p-5", className)}>
             <header className="flex items-center justify-between gap-2">
@@ -49,9 +50,18 @@ export function Frame({
                 </div>
             </header>
             <section className="flex items-start gap-4 overflow-x-auto pb-2">
-                {columns.map((column, index) => (
-                    <Column key={index} {...column} />
-                ))}
+                {columns.length > 0
+                    ? (
+                        columns.map((column, index) => (
+                            <Column key={index} {...column} />
+                        ))
+                    ) :
+                    <h1 className="h1">O projeto ainda não possui colunas</h1>
+                }
+                <Button variant={"secondary"} size={"lg"}>
+                    <Icon icon={ChartColumnBig} size="sm"/>
+                    <span>Adicionar Coluna</span>
+                </Button>
             </section>
         </main>
     )

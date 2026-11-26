@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export interface ColumnProps {
     nameColumn: string;
-    cards: CardDemoProps[];
+    cards?: CardDemoProps[];
     onDelete?: () => void;
     onAddCard?: () => void;
     className?: string;
@@ -14,7 +14,7 @@ export interface ColumnProps {
 
 export function Column({
     nameColumn,
-    cards,
+    cards = [],
     onDelete,
     onAddCard,
     className,

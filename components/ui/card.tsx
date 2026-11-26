@@ -36,11 +36,11 @@ function CardTitle({ className, ...props }: CardTitleProps) {
   return (
     <div
       data-slot="card-title"
-      className={cn("font-heading text-md font-light", className)}
+      className={cn("text-md", className)}
       {...props}
     />
   )
-}
+} 
 
 export {
   Card,
