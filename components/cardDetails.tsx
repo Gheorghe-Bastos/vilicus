@@ -41,7 +41,7 @@ export function CardDetail() {
             </section>
             <section className="flex flex-col justify-center w-full border border-border rounded-lg">
                 <h2 className="flex gap-2 justify-center items-center text-xl pt-5 font-semibold text-foreground"><Icon icon={Rows3} size="md"/>Quadro do Card</h2>
-                <Frame columns={columns} />
+                <Frame nameProject="" columns={columns} />
             </section>
         </main>
     )

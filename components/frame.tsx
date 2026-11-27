@@ -1,3 +1,5 @@
+"use client"
+
 import { Column, type ColumnProps } from "./column"
 import { Button } from "./ui/button"
 import { Icon } from "@/components/icon"
@@ -5,11 +7,12 @@ import { ChartColumnBig, Plus, Trash } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export interface FrameProps {
-    nameProject?: string
+    nameProject: string
     columns: ColumnProps[]
     description?: string
     onAddColumn?: () => void
     onDeleteProject?: () => void
+    onRenameColumn?: (index: number, name: string) => void
     className?: string
 }
 
@@ -19,6 +22,7 @@ export function Frame({
     description,
     onAddColumn,
     onDeleteProject,
+    onRenameColumn,
     className,
 }: FrameProps) {
 
@@ -50,17 +54,16 @@ export function Frame({
                 </div>
             </header>
             <section className="flex items-start gap-4 overflow-x-auto pb-2">
-                {columns.length > 0
-                    ? (
-                        columns.map((column, index) => (
-                            <Column key={index} {...column} />
-                        ))
-                    ) :
-                    <h1 className="h1">O projeto ainda não possui colunas</h1>
-                }
-                <Button variant={"secondary"} size={"lg"}>
-                    <Icon icon={ChartColumnBig} size="sm"/>
-                    <span>Adicionar Coluna</span>
+                {columns.map((column, index) => (
+                    <Column
+                        key={index}
+                        {...column}
+                        onRename={(name) => onRenameColumn?.(index, name)}
+                    />
+                ))}
+                <Button variant="secondary" size="lg">
+                    <Icon icon={ChartColumnBig} size="sm" />
+                    <span>Adicionar Lista</span>
                 </Button>
             </section>
         </main>

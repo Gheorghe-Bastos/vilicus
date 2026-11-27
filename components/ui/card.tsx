@@ -43,7 +43,7 @@ function CardTitle({ className, ...props }: CardTitleProps) {
 } 
 
 export {
-  Card,
+  Card, 
   CardHeader,
   CardTitle,
 }
